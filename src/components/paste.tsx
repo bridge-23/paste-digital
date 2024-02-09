@@ -1,5 +1,6 @@
 "use client";
-
+import React, { useState } from "react";
+import { CommentForm } from "./forms/paste-form";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import { useTheme } from "next-themes";
 
@@ -23,6 +24,12 @@ type PasteProps = {
 
 export function PasteCard({ paste, ownerProfile }: PasteProps) {
   const { theme } = useTheme();
+  const [comment, setComment] = useState<{ id: string; text: any; userId: string; }[]>(paste.comments || []);
+
+  const handleCommentSubmit = (text: any) => {
+    const newComment = { id: Date.now().toString(), text, userId: "anonymous" };
+    setComment([...comment, newComment]);
+  }
 
   return (
     <Card className="w-[90vw] max-w-screen-2xl">
@@ -49,6 +56,14 @@ export function PasteCard({ paste, ownerProfile }: PasteProps) {
             }}
           />
         </div>
+        <div style={{ fontSize: 'small', color: '#888', marginTop: '10px' }}>
+          {comment.map((comment) => (
+            <div key={comment.id}>
+              <p>{comment.text}</p>
+            </div>
+          ))}
+        </div>
+        <CommentForm onSubmit={handleCommentSubmit} />
       </CardContent>
       <CardFooter>
         <div className="flex flex-row items-center gap-2 text-foreground/80">

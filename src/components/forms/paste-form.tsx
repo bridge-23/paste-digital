@@ -188,7 +188,10 @@ export function PasteForm() {
     setSaving(true);
     try {
       const createdPaste = await createPaste(
-        { ...values, content: code },
+        {
+          ...values, content: code,
+          comments: []
+        },
         profile?.username ? `@${profile.username}` : "anonymous"
       );
       if (!createdPaste) {
@@ -261,5 +264,26 @@ export function PasteForm() {
         </Form>
       </CardContent>
     </Card>
+  );
+}
+
+export function CommentForm({ onSubmit }: { onSubmit: (text: string) => void }) {
+  const [text, setText] = useState("");
+
+  const handleSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    onSubmit(text);
+    setText("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="flex gap-4">
+      <Input
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Add a comment..."
+      />
+      <Button type="submit">Comment</Button>
+    </form>
   );
 }

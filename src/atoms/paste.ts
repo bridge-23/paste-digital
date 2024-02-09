@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 export const PASTES_COLLECTION = "pastes";
 
 export type Paste = {
+  comments: never[];
   title: string;
   language: string;
   content: string;
