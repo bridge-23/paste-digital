@@ -7,6 +7,7 @@ import WelcomePanel from "@/components/welcome-panel";
 import useBackground from "@/hooks/use-background";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import FileUpload from "../components/fileUpload"
 import { set } from "react-hook-form";
 
 export default function NewPage() {
@@ -60,7 +61,9 @@ export default function NewPage() {
 
   return (
     <div>
-      <HoodMap />
+      {/* <HoodMap /> */}
+      <FileUpload />
+      <button type="button" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cyan</button>
     </div>
   );
 }
