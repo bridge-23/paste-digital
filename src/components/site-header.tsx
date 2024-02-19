@@ -6,12 +6,12 @@ import { authState } from "@/atoms/auth";
 import { profileState } from "@/atoms/profile";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
-import { EnvelopeOpenIcon } from "@radix-ui/react-icons";
+import { FileTextIcon } from "@radix-ui/react-icons";
 
 export function SiteHeader() {
   const router = useRouter();
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex">
           <a className="mr-6 flex items-center space-x-2" href="/">
@@ -24,6 +24,12 @@ export function SiteHeader() {
         </div>
         <div className="flex flex-1 items-center space-x-2 justify-end">
           <nav className="flex items-center gap-4">
+            <div className="flex flex-row gap-1 items-center">
+              <span className="text-xl">🔥</span> x0
+            </div>
+            <div className="flex flex-row gap-1 items-center">
+              <span className="text-xl">🧾</span> x0
+            </div>
             <MainMenuToggle />
           </nav>
         </div>

@@ -17,46 +17,8 @@ export default function NewPage() {
   const [pasteOwnerProfile, setPasteOwnerProfile] = useState<Profile | null>(
     null
   );
-  const [loading, setLoading] = useState(true);
 
   useBackground(pasteOwnerProfile?.color);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const p = params.get("p");
-
-    async function loadUp(key: string) {
-      setLoading(true);
-      try {
-        const paste = await fetchPaste(key);
-        if (paste) {
-          setPaste(paste.data);
-
-          if (paste.owner) {
-            const profile = await fetchProfile(paste.owner);
-            if (profile) {
-              setPasteOwnerProfile(profile.data);
-            }
-          }
-        }
-      } catch (e) {
-        console.error(e);
-      }
-      setLoading(false);
-    }
-
-    if (p) {
-      setId(p);
-      loadUp(p);
-    } else {
-      setLoading(false);
-      // router.push("/new");
-    }
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>
