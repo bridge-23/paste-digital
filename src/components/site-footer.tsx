@@ -33,7 +33,7 @@ export function SiteFooter() {
             <Button
               onClick={() => setIsDrawerOpen(true)}
               size={"lg"}
-              className="bg-green-500 hover:bg-green-400 rounded-full h-20"
+              className="bg-green-500 hover:bg-green-400 rounded-full h-28 w-28"
             >
               <FileUp />
             </Button>
