@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from 'react';
 import { profileState } from "@/atoms/profile";
 import { useRecoilState } from "recoil";
 import { Card, CardContent } from "./ui/card";
@@ -10,6 +11,9 @@ import { UploadDrawer } from "./upload-drawer";
 
 export function SiteFooter() {
   const [profile, setProfile] = useRecoilState(profileState);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const closeDrawer = () => setIsDrawerOpen(false);
 
   if (!profile) {
     return null;
@@ -24,16 +28,17 @@ export function SiteFooter() {
         <a href="/rewards">
           <Gift />
         </a>
-        <Drawer>
+        <Drawer open={isDrawerOpen} onClose={closeDrawer}>
           <DrawerTrigger asChild>
             <Button
+              onClick={() => setIsDrawerOpen(true)}
               size={"lg"}
               className="bg-green-500 hover:bg-green-400 rounded-full h-20"
             >
               <FileUp />
             </Button>
           </DrawerTrigger>
-          <UploadDrawer />
+          <UploadDrawer onClose={closeDrawer} />
         </Drawer>
         <a href="/timeline">
           <History />
