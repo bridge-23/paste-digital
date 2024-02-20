@@ -7,6 +7,8 @@ import { profileState } from "@/atoms/profile";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { FileTextIcon } from "@radix-ui/react-icons";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Flame, Receipt } from "lucide-react";
 
 export function SiteHeader() {
   const router = useRouter();
@@ -24,12 +26,25 @@ export function SiteHeader() {
         </div>
         <div className="flex flex-1 items-center space-x-2 justify-end">
           <nav className="flex items-center gap-4">
-            <div className="flex flex-row gap-1 items-center">
-              <span className="text-xl">🔥</span> x0
-            </div>
-            <div className="flex flex-row gap-1 items-center">
-              <span className="text-xl">🧾</span> x0
-            </div>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="flex flex-row gap-1 items-center">
+                  <Flame className="text-red-500 w-6 h-6" />
+                  x1
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>Streak</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="flex flex-row gap-1 items-center">
+                  <Receipt className="text-green-500 w-6 h-6" />
+                  x64
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>Receipts Uploaded</TooltipContent>
+            </Tooltip>
+            <div className="flex flex-row gap-1 items-center"></div>
             <MainMenuToggle />
           </nav>
         </div>

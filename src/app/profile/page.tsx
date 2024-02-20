@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import useBackground from "@/hooks/use-background";
 import { ProfileForm } from "@/components/forms/profile-form";
 import { Loading } from "@/components/loading";
+import PageWrapper from "@/components/page-wrapper";
 
 export default function ProfilePage() {
   const [auth, setAuth] = useRecoilState(authState);
@@ -34,5 +35,9 @@ export default function ProfilePage() {
     return <Loading />;
   }
 
-  return <ProfileForm profile={profile} authKey={auth?.key as string} />;
+  return (
+    <PageWrapper>
+      <ProfileForm profile={profile} authKey={auth?.key as string} />
+    </PageWrapper>
+  );
 }

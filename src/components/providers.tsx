@@ -18,6 +18,7 @@ import { authState } from "@/atoms/auth";
 import { ThemeProvider } from "next-themes";
 import { Profile, fetchProfile, profileState } from "@/atoms/profile";
 import { useRouter } from "next/navigation";
+import { Tooltip, TooltipProvider } from "./ui/tooltip";
 
 function JunoAuthProvider({ children }: ProvidersProps) {
   const [user, setUser] = useRecoilState(authState);
@@ -74,7 +75,9 @@ export default function Providers({ children }: ProvidersProps) {
         defaultTheme="light"
         disableTransitionOnChange
       >
-        <JunoAuthProvider>{children}</JunoAuthProvider>
+        <JunoAuthProvider>
+          <TooltipProvider>{children}</TooltipProvider>
+        </JunoAuthProvider>
       </ThemeProvider>
     </RecoilRoot>
   );

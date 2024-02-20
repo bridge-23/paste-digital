@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import React from "react";
 import Providers from "@/components/providers";
 import { Toaster } from "@/components/ui/toaster";
+import { SiteFooter } from "@/components/site-footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,10 +38,9 @@ export default function RootLayout({
         <Providers>
           <div className="relative flex min-h-screen flex-col" style={{}}>
             <SiteHeader />
-            <main className="relative pb-6 lg:gap-10 lg:pb-8 mx-auto">
-              {children}
-            </main>
+            <main className="relative lg:gap-10 mx-auto">{children}</main>
             <Toaster />
+            <SiteFooter />
           </div>
         </Providers>
       </body>
