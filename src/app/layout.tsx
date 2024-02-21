@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import React from "react";
 import Providers from "@/components/providers";
 import { Toaster } from "@/components/ui/toaster";
+import { SiteFooter } from "@/components/site-footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,7 @@ export default function RootLayout({
           rel="icon"
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>"
         />
-        <title>HoodFunt.</title>
+        <title>HoodFunt</title>
         <link
           href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css"
           rel="stylesheet"
@@ -37,10 +38,9 @@ export default function RootLayout({
         <Providers>
           <div className="relative flex min-h-screen flex-col" style={{}}>
             <SiteHeader />
-            <main className="relative pb-6 lg:gap-10 lg:pb-8 mx-auto">
-              {children}
-            </main>
+            <main className="relative lg:gap-10 mx-auto">{children}</main>
             <Toaster />
+            <SiteFooter />
           </div>
         </Providers>
       </body>
