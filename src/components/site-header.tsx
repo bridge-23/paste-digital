@@ -19,7 +19,7 @@ export function SiteHeader() {
           <a className="mr-6 flex items-center space-x-2" href="/">
             <span className="font-bold inline-block">
               <span className="mr-2">🍔</span>
-              HoodFunt.
+              HoodFunt
             </span>
           </a>
           <nav className="flex items-center gap-6 text-sm"></nav>
